@@ -1,4 +1,6 @@
 fastapi
 uvicorn
-pydantic
-python-dateutil
+httpx
+pydantic>=2.0,<3.0
+
+
