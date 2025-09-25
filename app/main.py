@@ -3,6 +3,20 @@ from pydantic import BaseModel
 from typing import Optional, Dict, Any
 from datetime import datetime, timezone
 import os, hashlib
+from fastapi import FastAPI
+from app.auth import router as auth_router
+from app.shield import router as shield_router
+from app.memory import router as memory_router
+
+app = FastAPI(title="Lab6-proof — Citizen Shield")
+
+app.include_router(auth_router)
+app.include_router(shield_router)
+app.include_router(memory_router)
+
+@app.get("/")
+def root():
+    return {"ok": True, "service": "lab6-proof"}
 
 app = FastAPI(title="Citizen Shield", version="0.1.0")
 
@@ -95,7 +109,3 @@ def group_status():
         "reflections_per_day": REFLECTIONS_PER_DAY,
         "used_nullifiers": {k: len(v) for k, v in USED_NULLIFIERS.items()}
     }
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=7000)
