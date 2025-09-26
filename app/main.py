@@ -13,6 +13,7 @@ app = FastAPI(title="Lab6-proof — Citizen Shield")
 app.include_router(auth_router)
 app.include_router(shield_router)
 app.include_router(memory_router)
+app.include_router(onboard_router) 
 
 @app.get("/")
 def root():
@@ -109,3 +110,4 @@ def group_status():
         "reflections_per_day": REFLECTIONS_PER_DAY,
         "used_nullifiers": {k: len(v) for k, v in USED_NULLIFIERS.items()}
     }
+
