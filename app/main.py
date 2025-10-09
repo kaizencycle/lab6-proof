@@ -9,6 +9,11 @@ from app.shield import router as shield_router
 from app.memory import router as memory_router
 from app.onboard import router as onboard_router
 from app.routes import onnboard
+from fastapi import FastAPI
+from app.routes import health
+
+app = FastAPI()
+app.include_router(health.router)
 app.include_router(onboard.router)
 
 app = FastAPI(title="Lab6-proof — Citizen Shield")
