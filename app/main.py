@@ -8,6 +8,8 @@ from app.auth import router as auth_router
 from app.shield import router as shield_router
 from app.memory import router as memory_router
 from app.onboard import router as onboard_router
+from app.routes import onnboard
+app.include_router(onboard.router)
 
 app = FastAPI(title="Lab6-proof — Citizen Shield")
 
@@ -111,5 +113,6 @@ def group_status():
         "reflections_per_day": REFLECTIONS_PER_DAY,
         "used_nullifiers": {k: len(v) for k, v in USED_NULLIFIERS.items()}
     }
+
 
 
