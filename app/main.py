@@ -1,4 +1,3 @@
-from app.routes import onnboard
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, Dict, Any
@@ -10,7 +9,7 @@ from app.shield import router as shield_router
 from app.memory import router as memory_router
 from app.onboard import router as onboard_router
 from fastapi import FastAPI
-from app.routes import health
+from app.routes import health, onboard
 
 app = FastAPI()
 app.include_router(health.router)
@@ -118,6 +117,7 @@ def group_status():
         "reflections_per_day": REFLECTIONS_PER_DAY,
         "used_nullifiers": {k: len(v) for k, v in USED_NULLIFIERS.items()}
     }
+
 
 
 
