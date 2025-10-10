@@ -3,7 +3,7 @@
     "target": "ES2020",
     "module": "ESNext",
     "jsx": "react-jsx",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -18,8 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    },
-    "typeRoots": ["./node_modules/@types"]
+    }
   },
   "include": [
     "src",
@@ -28,10 +27,5 @@
   "exclude": [
     "node_modules",
     "dist"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
   ]
 }
