@@ -1,4 +1,6 @@
-type Props = { title: string; children: React.ReactNode }
+import { ReactNode } from 'react'
+
+type Props = { title: string; children: ReactNode }
 export default function SealCard({ title, children }: Props) {
   return (
     <div className="card">
