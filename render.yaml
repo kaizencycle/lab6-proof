@@ -2,10 +2,8 @@ services:
   - type: web
     name: citizen-shield-app
     env: node
-    buildCommand: cd citizen-shield-app && npm install --include=dev && npx vite build --config vite.config.js
+    buildCommand: cd citizen-shield-app && npm install && npm run build
     staticPublishPath: ./citizen-shield-app/dist
     envVars:
       - key: NODE_VERSION
         value: 18
-      - key: NPM_CONFIG_PRODUCTION
-        value: false
