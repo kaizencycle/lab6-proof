@@ -1,44 +1,11 @@
 services:
   - type: web
-    name: lab6-proof-api
-    env: python
-    buildCommand: |
-      pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
-    plan: starter
-    autoDeploy: true
-
-  - type: web
-    name: citizen-shield-frontend
-    env: static
-    buildCommand: |
-      cd frontend/citizen-shield-app
-      npm ci
-      npm run build
-    staticPublishPath: frontend/citizen-shield-app/dist
+    name: citizen-shield-app
+    env: node
+    buildCommand: cd citizen-shield-app && npm install --include=dev && npm run build
+    staticPublishPath: ./citizen-shield-app/dist
     envVars:
-      - key: VITE_LAB6_API
-        value: https://lab6-proof-api.onrender.com
-
-services:
-  - type: web
-    name: lab6-proof-api
-    env: python
-    buildCommand: |
-      pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /health
-    plan: starter
-    autoDeploy: true
-
-  - type: web
-    name: citizen-shield-frontend
-    env: static
-    buildCommand: |
-      cd frontend/citizen-shield-app
-      npm ci
-      npm run build
-    staticPublishPath: frontend/citizen-shield-app/dist
-    envVars:
-      - key: VITE_LAB6_API
-        value: https://lab6-proof-api.onrender.com
+      - key: NODE_VERSION
+        value: 18
+      - key: NPM_CONFIG_PRODUCTION
+        value: false
