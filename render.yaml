@@ -2,8 +2,8 @@ services:
   - type: web
     name: citizen-shield-app
     env: node
-    buildCommand: chmod +x build.sh && ./build.sh
-    staticPublishPath: ./citizen-shield-app/dist
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
     envVars:
       - key: NODE_VERSION
         value: 18
