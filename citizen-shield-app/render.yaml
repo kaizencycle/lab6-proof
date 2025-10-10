@@ -2,7 +2,7 @@ services:
   - type: web
     name: citizen-shield-app
     env: node
-    buildCommand: npm install --include=dev && npx vite build
+    buildCommand: npm install --include=dev && npm run build
     staticPublishPath: ./dist
     envVars:
       - key: NODE_VERSION
